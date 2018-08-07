@@ -92,7 +92,7 @@ set_up_page_tables:
     ; map first P3 entry to P2 table
     mov eax, p2_table
     or eax, 0b11 ; present + writable
-    moc [p3_table], eax
+    mov [p3_table], eax
 
     ; map each P2 entry to a huge 2MiB page
     mov ecx, 0  ; counter variable
