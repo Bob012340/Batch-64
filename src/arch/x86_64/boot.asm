@@ -1,4 +1,5 @@
 global start
+extern long_mode_start
 
 section .text
 bits 32
@@ -13,6 +14,8 @@ start:
 
     ; load the 64-bit GDT
     lgdt [gdt64.pointer]
+    
+    jmp gdt64.code:long_mode_start
 
     ; print `OK` to screen
     mov dword [0xb8000], 0x2f4b2f4f
